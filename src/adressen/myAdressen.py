@@ -9,8 +9,9 @@ from CAdressen import Adressen
 
 if __name__ == '__main__':
     def main():
-        myAdresse= Adressen('Herr', 'Doctor', 'Michael', 'Mayer', 'Brunnenstr. 5', '86150', 'Augsburg' )
-        myAdresse.format()
+        myAdresse= Adressen(anrede='Herr', titel='Prof.', vorname='Michael', nachname='Mayer', strasse='Brunnenstr. 5', plz='86150', ort='Augsburg' )
+        label= myAdresse.format()
+        print label
         
 
     main()
