@@ -8,7 +8,7 @@ def fibboRecursive(x):
     if x == 1:
         return 1    
 
-    return fibboRecursive(x-1) + fibboRecursive(x-2)
+    return fibboRecursive(x-1.0) + fibboRecursive(x-2.0)
 
 def fibboBinet(x):
     #(1 + math.sqrt(5)/2), 5

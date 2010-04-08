@@ -1,6 +1,7 @@
 from wsgiref.simple_server import make_server
 from cgi import FieldStorage
 from fibbo import fibboRecursive, fibboBinet
+import re
 
 
 html_template = '''<html>
@@ -12,8 +13,12 @@ html_template = '''<html>
     <h3>Bitte eine Zahl eingeben:</h3>
     <p>
       <input type="text" name="eingabe" value="%s" />
+    </p>
+    <p>
       <input type="radio" name="auswahl" value="Rekursiv" checked="checked" >Rekursiv<br>
       <input type="radio" name="auswahl" value="Binet">Binet<br>
+    <p/>
+    <p>
       <input type="submit" name="enter" value="Ausrechnen" />
     </p>
     <h3>Ergebnis:</h3>
@@ -34,12 +39,27 @@ def application(environ, start_response):
     
     
     if input:
-        eingabe = int(input)
-        if auswahl == 'Rekursiv':
-            ausgabe = fibboRecursive(eingabe)
+        filter= re.match('[0-9]+', input)
+        
+        if filter:
+            eingabe = int(filter.group())
         else:
-            ausgabe = fibboBinet(eingabe)
-        print auswahl
+            eingabe= 0
+            
+        
+        if auswahl == 'Rekursiv':
+            try:
+                ausgabe = fibboRecursive(eingabe)
+            except:
+                ausgabe = 0
+                eingabe = 'Zahl zu gross'
+        else:
+            try:
+                ausgabe = fibboBinet(eingabe)
+            except:
+                ausgabe = 0
+                eingabe = 'Zahl zu gross'
+         
     else:
         eingabe = ausgabe = ''
 
