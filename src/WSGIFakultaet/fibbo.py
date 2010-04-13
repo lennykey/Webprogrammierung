@@ -13,7 +13,7 @@ def fibboRecursive(x):
 def fibboBinet(x):
     #(1 + math.sqrt(5)/2), 5
     binet = (1.0/math.sqrt(5.0)) * (pow(((1.0 + math.sqrt(5.0))/2.0), x) - pow(((1.0 - math.sqrt(5.0))/2.0), x))
-    print binet
+    #print binet
     return binet
 
 
