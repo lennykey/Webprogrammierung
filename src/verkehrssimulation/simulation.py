@@ -10,19 +10,30 @@ if __name__ == '__main__':
     
     SilberPfeil = Car('silber', 0, 0) 
     SilberPfeil.accelerate()
-    #SilberPfeil.drive()
+    SilberPfeil.drive()
     
     myWorld = World(carList)
     myWorld.addCar(SilberPfeil)
     
+    
+   
     myWorld.step(1)
+    myWorld.report()
     myWorld.step(1)
+    myWorld.report()
     myWorld.step(1)
+    myWorld.report()
     myWorld.step(1)
+    myWorld.report()
     myWorld.step(1)
-    myWorld.step(1)
+    myWorld.report()
+    # Jetzt wird gebremst
+    print 'Bremsen\n'
+    myWorld.step(-1)
+    myWorld.report()
 
-
+    myWorld.step(-1)
+    myWorld.report()
     
     myWorld.report()
 

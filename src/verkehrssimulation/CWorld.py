@@ -21,6 +21,8 @@ class World(object):
     def report(self):
         for idx, car in enumerate(self.cars):
             print idx, '/', car.color , car.position , car.speed
+        
+        print '\n'
             
         
         #print idx, '/', color, ':', position, speed 
