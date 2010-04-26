@@ -7,9 +7,6 @@ Created on 26.04.2010
 from wsgiref.simple_server import make_server
 from cgi import FieldStorage
 #from fibbo import fibboRecursive, fibboBinet
-import re
-import csv
-import types
 
 html_formular = '''
 <html>
