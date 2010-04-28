@@ -56,12 +56,13 @@ def application(environ, start_response):
     #print expression
     #expression = '5+1'
     
-    if operator == '/' and zahl2 == '0':
+    if operator == '/' and (zahl2 == '0' or zahl2 == '0.0'):
         ergebnis = 'Operation nicht gueltig'
     else:
-        ergebnis = int(eval(expression))
+        ergebnis = float(eval(expression))
         print ergebnis
         
+    
     
     if operator == '+': 
         selectBox= '''
