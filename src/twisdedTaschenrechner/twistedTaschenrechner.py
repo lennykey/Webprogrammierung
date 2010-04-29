@@ -38,7 +38,7 @@ class RequestHandler(http.Request):
         
         zahl1 = ''
         try:
-            zahl1 = re.match('[0-9]+', ''.join(liste.get('zahl1',
+            zahl1 = re.match('[0-9.]+', ''.join(liste.get('zahl1',
                                                           '0')[0:])).group()
         except AttributeError:
             zahl1= 'Bitte Zahl eingeben'
