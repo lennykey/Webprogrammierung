@@ -58,48 +58,56 @@ class RequestHandler(http.Request):
         toEvaluate.append(operator)
         toEvaluate.append(zahl2)
         
-        
-        
         toEvaluate = ''.join(toEvaluate)
         
         try:
             ergebnis = float(eval(toEvaluate))
-            print ergebnis
+            #print ergebnis
         except ZeroDivisionError:
             ergebnis = 'Division durch 0 ist nicht definiert'
         except SyntaxError:
             ergebnis = 'Fehler' 
         
-        if operator == '+':
-            options= '''
-            <option selected>+</option>
-            <option>-</option>
-            <option>*</option>
-            <option>/</option>
-            '''
-        elif operator == '-':
-            options= '''
-            <option >+</option>
-            <option selected>-</option>
-            <option>*</option>
-            <option>/</option>
-            '''
-        elif operator == '*':
-            options= '''
-            <option >+</option>
-            <option>-</option>
-            <option selected>*</option>
-            <option>/</option>
-            '''
-        elif operator == '/':
-            options= '''
-            <option>+</option>
-            <option>-</option>
-            <option>*</option>
-            <option selected>/</option>
-            '''
-            
+        options = []
         
+        operators = ['+', '-', '*', '/']
+        
+        for element in operators:
+            if element == operator:
+                options.append('<option selected>%s</option>' % element)
+            else:
+                options.append('<option>%s</option>' % element)
+               
+        
+        #if operator == '+':
+        #    options= '''
+        #    <option selected>+</option>
+        #    <option>-</option>
+        #    <option>*</option>
+        #    <option>/</option>
+        #    '''
+        #elif operator == '-':
+        #    options= '''
+        #    <option >+</option>
+        #    <option selected>-</option>
+        #    <option>*</option>
+        #    <option>/</option>
+        #    '''
+        #elif operator == '*':
+        #    options= '''
+        #    <option >+</option>
+        #    <option>-</option>
+        #    <option selected>*</option>
+        #    <option>/</option>
+        #    '''
+        #elif operator == '/':
+        #    options= '''
+        #    <option>+</option>
+        #    <option>-</option>
+        #    <option>*</option>
+        #    <option selected>/</option>
+        #    '''
+
         self.write(self.html_taschenrechner % (zahl1, options, zahl2, ergebnis) )
         
         self.finish()
